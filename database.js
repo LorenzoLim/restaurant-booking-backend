@@ -13,7 +13,7 @@ const db = mongoose
     console.log("Successfully connected to database!");
   })
   .catch(error => {
-    // SOmething went wrong!
+    // Something went wrong!
     console.log("Error connecting to MongoDB database", error);
   });
 
