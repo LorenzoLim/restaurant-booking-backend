@@ -28,10 +28,10 @@ router.get("/:id", (req, res) => {
 /* Creates new booking */
 router.post("/", (req, res) => {
   Booking.create({
-    date: req.body.date,
-    time: req.body.time,
+    dateTime: req.body.dateTime,
     name: req.body.name,
-    size: req.body.size
+    size: req.body.size,
+    booked: req.body.booked
   }).then(booking => {
     res.send(booking);
   });
