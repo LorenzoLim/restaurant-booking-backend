@@ -37,6 +37,21 @@ router.post("/", (req, res) => {
   });
 });
 
+/* Returns all bookings by date */
+router.get("/by-date", (req, res) => {
+  if (req.query.userId) {
+    Booking.aggregate([
+      { $match: { bookingUser: new ObjectId(req.query.userId) } }
+    ]).then(booking => {
+      res.json(booking);
+    });
+  } else {
+    Booking.find().then(booking => {
+      res.json(booking);
+    });
+  }
+});
+
 /* Update data from database */
 router.put("/:id", (req, res) => {
   Booking.findOneAndUpdate(req.params.id, req.body).then(booking => {
