@@ -38,18 +38,25 @@ router.post("/", (req, res) => {
 });
 
 /* Returns all bookings by date */
-router.get("/by-date", (req, res) => {
-  if (req.query.userId) {
-    Booking.aggregate([
-      { $match: { bookingUser: new ObjectId(req.query.userId) } }
-    ]).then(booking => {
-      res.json(booking);
-    });
-  } else {
-    Booking.find().then(booking => {
-      res.json(booking);
-    });
-  }
+router.post("/byDate", (req, res) => {
+  Booking.find().then(bookings => {
+    const filteredDates = bookings
+      .map(booking => {
+        const dateString = booking.dateTime.toLocaleDateString();
+        const requestDateString = new Date(
+          req.body.dateTime
+        ).toLocaleDateString();
+
+        if (requestDateString === dateString) {
+          return booking;
+        } else {
+          return;
+        }
+      })
+      .filter(date => date);
+
+    res.json(filteredDates);
+  });
 });
 
 /* Update data from database */
