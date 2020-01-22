@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
     dateTime: req.body.dateTime,
     name: req.body.name,
     size: req.body.size,
-    booked: req.body.booked
+    status: req.body.status
   }).then(booking => {
     res.send(booking);
   });

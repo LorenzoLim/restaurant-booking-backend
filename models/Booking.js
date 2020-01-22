@@ -5,7 +5,7 @@ const Booking = mongoose.model("Booking", {
   dateTime: Date,
   name: String,
   size: Number,
-  booked: Boolean,
+  status: String,
   bookingUser: [{ type: Schema.Types.ObjectId, ref: "User" }]
 });
 
