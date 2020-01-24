@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const Table = mongoose.model("Table", {
   size: Number,
-  minSize: Number,
-  date: Date
+  minSize: Number
 });
 
 module.exports = Table;
