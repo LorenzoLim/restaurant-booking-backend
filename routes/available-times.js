@@ -5,9 +5,11 @@ const router = express.Router();
 
 /* Returns all availableTimes or all availableTimes by user id */
 router.get("/", (req, res) => {
-  AvailableTime.find().then(availableTime => {
-    res.json(availableTime);
-  });
+  AvailableTime.find()
+    .populate("tableId")
+    .then(availableTime => {
+      res.json(availableTime);
+    });
 });
 
 /* Find availableTime by ID */
