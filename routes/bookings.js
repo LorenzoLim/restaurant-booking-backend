@@ -46,6 +46,8 @@ router.post("/byDate", (req, res) => {
         const requestDateString = new Date(
           req.body.dateTime
         ).toLocaleDateString();
+        console.log("datestring", dateString);
+        console.log("request datestring", requestDateString);
 
         if (requestDateString === dateString) {
           return booking;
@@ -54,9 +56,9 @@ router.post("/byDate", (req, res) => {
         }
       })
       .filter(date => date);
-    console.log(filteredDates);
+    // console.log(filteredDates);
 
-    res.json(filteredDates);
+    res.json(bookings);
   });
 });
 
