@@ -51,6 +51,8 @@ router.post("/byDate", (req, res) => {
         console.log(requestDateString);
 
         if (requestDateString === dateString) {
+          console.log("Booking matched: ", booking);
+
           return booking;
         } else {
           return;
