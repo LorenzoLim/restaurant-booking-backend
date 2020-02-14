@@ -59,6 +59,8 @@ router.post("/byDate", (req, res) => {
         }
       })
       .filter(date => date);
+    console.log("Filtered dates: ", filteredDates);
+
     res.json(filteredDates);
   });
 });
