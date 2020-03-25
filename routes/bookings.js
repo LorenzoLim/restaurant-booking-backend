@@ -46,21 +46,13 @@ router.post("/byDate", (req, res) => {
         const requestDateString = new Date(
           req.body.dateTime
         ).toLocaleDateString();
-
-        console.log(dateString);
-        console.log(requestDateString);
-
         if (requestDateString === dateString) {
-          console.log("Booking matched: ", booking);
-
           return booking;
         } else {
           return;
         }
       })
       .filter(date => date);
-    console.log("Filtered dates: ", filteredDates);
-
     res.json(filteredDates);
   });
 });
